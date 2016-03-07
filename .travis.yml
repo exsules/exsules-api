@@ -2,6 +2,8 @@ language: ruby
 
 addons:
   postgresql: 9.4
+  code_climate:
+    secure: 4Ihi7AN4Fje6MUCHYb9ei8rB8eYTKI2jl9LW8SN48+xyZ2g69Dcn4TJZ6bnlOuTRv6A3c2p6iiiLcR/oJN67loFBKTO3+DtSkhuCiISEFzUXihgRYGUMi9bOpSuCa2i6rTfrThgTUrnqku3KiEL8lOCDs1NV/kscmZtursXm1xBl3GP+L3mBDaDTZ1/wQAOKS7XXNc7rJsD8dSlR5hmErYewdNobnZI7Y4vXD0s6anHw2BoeS/pVmgyjCrJSLW/lW5vca2WQ9cjinHsu1p/kI+qzNvDFpM2gevaGZjaLcN8ccZ+TTPJhzpuatLKBLgZI+kBH81ujY9kTi8Lv2kKqGfCRdulAjhQyNAEnKwiqQLpQyKuQXQ34MDMALCu3IjvEX/+GKvgiFbZBYFpOF7Hze5vBTGl2tefcb3fXaHmlzEH5Uru90xZqVuqbGPnc0G4kjbMBLRz0RSKkauJRL80+KX0lm/alnCSDzFjHrmy319CdWbLifG7BAs0RsXFafet/BP+X3y4bl+Cl8Pblm8LTnCiNs8N70DeGA/PhLBavv2XoEnEsxhYPatwJdNHlLTRUUQc/RIoJwxMnNh/I3IMvIsxEzSf30mR/Q3IaM1xKdbficxGt/ewtp80XdbLDIpIMcUjm+NQqH1S8MixRKazl3BQv5+CX29hJDagwRuXx8nQ=
 
 rvm:
   - 2.2.4
@@ -9,8 +11,8 @@ rvm:
 
 env:
   global:
-  - RUBY_GC_MALLOC_LIMIT=90000000
-  - RUBY_GC_HEAP_FREE_SLOTS=200000
+    - RUBY_GC_MALLOC_LIMIT=90000000
+    - RUBY_GC_HEAP_FREE_SLOTS=200000
 
 services:
   - redis
@@ -27,7 +29,7 @@ before_script:
 bundler_args: "--without development --jobs 3 --retry 5"
 
 script:
-  - RAILS_ENV=test SIMPLECOV=true bundle exec rspec
+  - RAILS_ENV=test CODECLIMATE=true bundle exec rspec
 
 notifications:
   email: false

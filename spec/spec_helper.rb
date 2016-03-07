@@ -1,3 +1,7 @@
+if ENV['CODECLIMATE']
+  require 'codeclimate-test-reporter'
+  CodeClimate::TestReporter.start
+end
 require 'rubygems'
 
 require 'mocha/api'
