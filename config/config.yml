@@ -1,0 +1,13 @@
+default: &default
+  emails:
+    support: support@exsules.com
+    default: noreply@exsules.com
+
+development:
+  <<: *default
+
+production:
+  <<: *default
+
+test:
+  <<: *default

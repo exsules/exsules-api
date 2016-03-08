@@ -1,0 +1,39 @@
+language: ruby
+
+addons:
+  postgresql: 9.4
+  code_climate:
+    repo_token:
+      secure: cHK13F6xFoqMCKMHrnUnHB66DWPSeCXCsHmlSf3eBLR/Q/xLO+MkhRfqd3pH827P6EOq4fGPjGRxDE22HOwry9Ry35MHKATsFDkrZd+LPFXOwQoXuESF0SAaFrKxi//Fgc1+pRwL1Pl9Y1aQAp5cc24LZ81xTeKuIzd2YOg2O78T5MVyH5jshHBkvrug1jwFjD28YNE6BnPZ8kXI8aCXu4ZQSoGHSafC4EO4/oC9njJjMcYlp9qk9zpaQGdXEvR54BqMrr6F5PpBlST6UxWGHQy4Ds0vrNZv8IJYmNFehOBb8APL4+yrcN3OfeAQ2KvkuhuEGGQhFhHT9k8snCn/F+1MLO8ESeT1DnHBumEYRlbbInS6IWI/VfgBEGIXD5obc3vf9JMSNVOWe02Qg+FKzC0hFWjdEq8rTdXip4JWCPwryLcZ13KS8YsJ9PU6vLYLYlfK6r1xl5IrwMQ6y8UzS8Te1ZN7baqVh5KEJePUTd2DAI64Lg2lgYAZJtBjCrcInqp/P9irGggVmKNkx6NCXaj6uE0wS0T+zHh0GKaAH5jCw/4iqoILqF5llyOn0YgkevLu8GCM1tKQJfjn1+409evoAu5OWYlxyNpqrazPW5+rPwg99a4FxCqnarYtZgJbYtUFxKdfm/04F/6PSaIAOqHiA5DRZV1lT3V3bXYWa44=
+
+rvm:
+  - 2.2.4
+  - 2.3.0
+
+env:
+  global:
+    - RUBY_GC_MALLOC_LIMIT=90000000
+    - RUBY_GC_HEAP_FREE_SLOTS=200000
+
+services:
+  - redis
+
+sudo: false
+
+cache: bundler
+
+before_script:
+  - cp config/database.yml.ci config/database.yml
+  - cp config/exsules.yml.example config/exsules.yml
+  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+
+bundler_args: "--without development --jobs 3 --retry 5"
+
+script:
+  - RAILS_ENV=test CODECLIMATE=true bundle exec rspec
+
+notifications:
+  email: false
+  slack:
+    rooms:
+      secure: S/aOGrs+HR2z9bKVPGZWWFRuPVulFWJKpU/F/rKtXAIiQ7Co0LP88DH74VxWtlnREU36XRCL+rL8++BYw6VprDXK25d1q9BAIwuQudVtbEYmgs4VohsjMUUhW9OIZhb+3sCcvRp4xC1A/MY0CGGugcS8shPAQCDIwWna524XNSgrnbXb9NyrVklI675CiaOMe6IhOxDzqeR81a/7fmOsXDq6QQuhuEGh9WVW0tB5Cn+JQxXQxfujmcH6FNA1TOTXywNdhC3XNTiJlnDBHyeVCuYlY2eeva7aL9IPsP1rnPrXVBLmRHohJae/GOrhumEwmaNX5UuPpOmZyKwjuaI4c7N51n7r2BNcZ/9WWpNmq8JI5wiL2mDWxFdqb+d3efCJlj+USawb7mo+mpXsW86sr6aGuibv5RlgHxxXURxnhAUJnJ3EVWnVt4hnrW07tuU36lpr0VqtpG3IF2Be8gA45PSw4eBEHlq1NzberBshWA/QrS849aakeJR35es+Jgwt6CiDFekd5sYvsbCnPbwGTqEaWkycI5+Qvf+vZZtMZrWrjh70XX0WUeB3LXml3QOOG7en5BxCLL7W2cc1RKkhQqfLXKHAvvUiK9rKritRTUIyXVNsUNVot7jkoT20z0jAKrNpnrl62l/8ro3Qr5pxRgvSozRTvGbTwBne+bjlUBg=

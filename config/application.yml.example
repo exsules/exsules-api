@@ -1,0 +1,35 @@
+# Add configuration values here, as shown below.
+#
+development: 
+  PUSHER_APP_ID: "PUSHER_APP_ID"
+  PUSHER_KEY: PUSHER_KEY
+  PUSHER_SECRET: PUSHER_SECRET
+  REDIS_HOST: redisio
+  REDIS_PORT: "6379"
+
+  # SMTP SETTINGS
+  SMTP_HOST: "127.0.0.1"
+  SMTP_PORT: "1025"
+  SMTP_USER: ""
+  SMTP_PASSWORD: ""
+  SMTP_DOMAIN: "exsules.dev"
+  SMTP_AUTHENTICATION: "plain"
+  SMTP_STARTSSL: "false"
+  SMTP_OPENSSL_VERIFY_MODE: "none"
+
+production:
+  PUSHER_APP_ID: "PUSHER_APP_ID"
+  PUSHER_KEY: PUSHER_KEY
+  PUSHER_SECRET: PUSHER_SECRET
+  REDIS_HOST: redisio
+  REDIS_PORT: "6379"
+
+  # SMTP SETTINGS
+  SMTP_HOST: "127.0.0.1"
+  SMTP_PORT: "1025"
+  SMTP_USER: ""
+  SMTP_PASSWORD: ""
+  SMTP_DOMAIN: "exsules.dev"
+  SMTP_AUTHENTICATION: "plain"
+  SMTP_STARTSSL: "false"
+  SMTP_OPENSSL_VERIFY_MODE: "none"
