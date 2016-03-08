@@ -10,6 +10,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 #require 'rspec/autorun'
+require 'webmock/rspec'
 require 'shoulda'
 require 'sidekiq/testing'
 
@@ -50,11 +51,11 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, type: :controller
   #config.include DeviseMapping, type: :controller
 
-  config.before(:suite) do
-    Sidekiq::Testing.inline!
+  config.before(:all) do
+    WebMock.disable_net_connect! allow_localhost: true
   end
 
   config.after(:suite) do
-    Sidekiq::Testing.fake!
+    WebMock.disable_net_connect!
   end
 end

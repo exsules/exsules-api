@@ -38,6 +38,7 @@ gem 'mini_magick'
 gem 'twitter-text'
 gem 'colorize'
 gem 'friendly_id'
+gem 'link_thumbnailer'
 
 gem 'rack-cors'
 
@@ -67,6 +68,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rubocop', '~> 0.37.2', require: false
   gem 'bundler-audit', require: false
+  gem 'webmock', require: nil
 end
 
 group :test do

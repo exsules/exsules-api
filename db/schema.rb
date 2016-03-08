@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306030421) do
+ActiveRecord::Schema.define(version: 20160307215020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 20160306030421) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "link_crawler_caches", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "image"
+    t.string   "url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "photos", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.string   "caption"
     t.uuid     "user_id"
@@ -56,12 +65,13 @@ ActiveRecord::Schema.define(version: 20160306030421) do
   create_table "posts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
     t.uuid     "user_id"
     t.text     "message"
-    t.integer  "likes_count",    default: 0
-    t.integer  "comments_count", default: 0
+    t.integer  "likes_count",           default: 0
+    t.integer  "comments_count",        default: 0
     t.uuid     "from_user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "reposts_count",  default: 0
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.integer  "reposts_count",         default: 0
+    t.uuid     "link_crawler_cache_id"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
