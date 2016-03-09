@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     jsonapi_resources :users, only: [:index, :show, :create]
     jsonapi_resources :posts
     jsonapi_resources :albums
+    jsonapi_resources :searches, only: [:index]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

@@ -169,11 +169,21 @@ GEM
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    elasticsearch (1.0.15)
+      elasticsearch-api (= 1.0.15)
+      elasticsearch-transport (= 1.0.15)
+    elasticsearch-api (1.0.15)
+      multi_json
+    elasticsearch-transport (1.0.15)
+      faraday
+      multi_json
     erubis (2.7.0)
     excon (0.47.0)
     fabrication (2.14.1)
     faker (1.6.3)
       i18n (~> 0.5)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.10)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -318,6 +328,7 @@ GEM
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
+    multipart-post (2.0.0)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -404,6 +415,10 @@ GEM
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
+    searchkick (1.2.1)
+      activemodel
+      elasticsearch (>= 1)
+      hashie
     settingslogic (2.0.9)
     sexp_processor (4.7.0)
     shoulda (3.5.0)
@@ -499,6 +514,7 @@ DEPENDENCIES
   rspec-rails!
   rspec-support!
   rubocop (~> 0.37.2)
+  searchkick
   seed-fu!
   settingslogic
   shoulda

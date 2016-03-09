@@ -43,6 +43,18 @@ class User < ApplicationRecord
 
   friendly_id :slug_candidates, use: :slugged
 
+  searchkick match: :word_start, suggest: [:full_name], callbacks: :async
+
+  def search_data
+    {
+      id: id,
+      username: username,
+      first_name: first_name,
+      last_name: last_name,
+      full_name: "#{first_name} #{last_name}"
+    }
+  end
+
   def slug_candidates
     [
       :username,

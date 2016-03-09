@@ -1,7 +1,6 @@
 module V1
   class PostResource < BaseResource
-    attributes :id,
-               :author,
+    attributes :author,
                :message,
                :username,
                :user_id,
