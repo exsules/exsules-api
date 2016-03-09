@@ -44,4 +44,8 @@ RSpec.configure do |config|
   end
 
   Kernel.srand config.seed
+
+  config.include Helpers
+  config.include Devise::TestHelpers, type: :controller
+  config.include DeviseMapping, type: :controller
 end
