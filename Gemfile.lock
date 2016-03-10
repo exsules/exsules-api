@@ -1,12 +1,4 @@
 GIT
-  remote: https://github.com/cerebris/jsonapi-resources.git
-  revision: ef92decad624a889e205599587ff6b9eaba508ec
-  branch: rails5
-  specs:
-    jsonapi-resources (0.7.0)
-      rails (>= 4.0)
-
-GIT
   remote: https://github.com/cimtico/seed-fu.git
   revision: 264801cf2cec68c848ceb5180a5341e7683cb0ba
   branch: rails_5
@@ -312,6 +304,8 @@ GEM
     inflecto (0.0.2)
     ipaddress (0.8.3)
     json (1.8.3)
+    jsonapi-serializers (0.6.5)
+      activesupport
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
@@ -493,7 +487,7 @@ DEPENDENCIES
   friendly_id
   hashie
   hiredis
-  jsonapi-resources!
+  jsonapi-serializers
   mini_magick
   mocha
   oj

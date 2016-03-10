@@ -9,8 +9,7 @@ gem 'rails', '>= 5.0.0.beta1.1', '< 5.1'
 gem 'pg', '~> 0.18'
 gem 'puma'
 
-# switch to official when https://github.com/cerebris/jsonapi-resources/pull/579 has been merged
-gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources', branch: 'rails5'
+gem 'jsonapi-serializers'
 gem 'oj'
 gem 'oj_mimic_json'
 
