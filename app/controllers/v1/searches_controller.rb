@@ -1,22 +1,14 @@
 module V1
   class SearchesController < ApplicationController
+    before_action :authenticate_user!
 
     def index
-      #query_param = User.search(params[:q], {
-        #fields: ["first_name", "last_name"],
-        #limit: 10
-      #})
-      #query_param = User.search params[:q], fields: ["first_name", "last_name"]
-      query_param = User.search params[:q]#, fields: ["first_name", "last_name"]
+      search_query = User.search(params[:q], {
+        fields: ["first_name", "last_name", "username"],
+        limit: 10
+      })
 
-      query_param.collect do |u|
-        json =  JSONAPI::ResourceSerializer.
-          new(V1::SearchResource).
-          serialize_to_hash(V1::SearchResource.new(
-            u, nil
-          ))
-        render json: json
-      end
+      render json: serialize_models(search_query, {serializer: SearchSerializer})
     end
   end
 end
