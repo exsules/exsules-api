@@ -7,9 +7,9 @@ class UserSerializer < BaseSerializer
              :birthday,
              :role,
              :password,
-             :email,
              :slug
 
   has_many :posts
   has_many :albums, as: :owner
+
 end

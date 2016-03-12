@@ -3,9 +3,7 @@ module DeviseMapping
 
   included do
     before(:each) do
-      request.env["devise.mapping"] = Devise.mappings[:user]
-
-      allow(SecureRandom).to receive(:urlsafe_base64).with(nil, false).and_return("Nbdlw89hmGAd1y1Ch6fhfw")
+      @request.env["devise.mapping"] = Devise.mappings[:user]
     end
   end
 
