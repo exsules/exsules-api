@@ -5,10 +5,7 @@ module Helpers
 
   def login(fabricator=nil)
     user = Fabricate(fabricator || :user)
-    auth_headers = user.create_new_auth_token
-
-    token = auth_headers['access-token']
-    client_id = auth_headers['client']
-    expiry = auth_headers['expiry']
+    sign_in(user)
+    request.headers.merge!(user.create_new_auth_token)
   end
 end

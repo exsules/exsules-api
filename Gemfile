@@ -25,6 +25,8 @@ gem 'sinatra', github: 'sinatra/sinatra', branch: 'master', require: nil
 gem 'hiredis'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
 
+gem 'searchkick'
+
 gem 'seed-fu', github: 'cimtico/seed-fu', branch: 'rails_5'
 
 gem 'settingslogic'
@@ -69,6 +71,7 @@ end
 
 group :test do
   gem 'codeclimate-test-reporter', require: nil
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
