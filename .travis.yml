@@ -2,9 +2,6 @@ language: ruby
 
 addons:
   postgresql: 9.4
-  code_climate:
-    repo_token:
-      secure: cHK13F6xFoqMCKMHrnUnHB66DWPSeCXCsHmlSf3eBLR/Q/xLO+MkhRfqd3pH827P6EOq4fGPjGRxDE22HOwry9Ry35MHKATsFDkrZd+LPFXOwQoXuESF0SAaFrKxi//Fgc1+pRwL1Pl9Y1aQAp5cc24LZ81xTeKuIzd2YOg2O78T5MVyH5jshHBkvrug1jwFjD28YNE6BnPZ8kXI8aCXu4ZQSoGHSafC4EO4/oC9njJjMcYlp9qk9zpaQGdXEvR54BqMrr6F5PpBlST6UxWGHQy4Ds0vrNZv8IJYmNFehOBb8APL4+yrcN3OfeAQ2KvkuhuEGGQhFhHT9k8snCn/F+1MLO8ESeT1DnHBumEYRlbbInS6IWI/VfgBEGIXD5obc3vf9JMSNVOWe02Qg+FKzC0hFWjdEq8rTdXip4JWCPwryLcZ13KS8YsJ9PU6vLYLYlfK6r1xl5IrwMQ6y8UzS8Te1ZN7baqVh5KEJePUTd2DAI64Lg2lgYAZJtBjCrcInqp/P9irGggVmKNkx6NCXaj6uE0wS0T+zHh0GKaAH5jCw/4iqoILqF5llyOn0YgkevLu8GCM1tKQJfjn1+409evoAu5OWYlxyNpqrazPW5+rPwg99a4FxCqnarYtZgJbYtUFxKdfm/04F/6PSaIAOqHiA5DRZV1lT3V3bXYWa44=
 
 rvm:
   - 2.2.4
@@ -33,7 +30,7 @@ before_script:
 bundler_args: "--without development --jobs 3 --retry 5"
 
 script:
-  - RAILS_ENV=test CODECLIMATE=true bundle exec rspec
+  - RAILS_ENV=test COVERALLS=true bundle exec rspec
 
 notifications:
   email: false
