@@ -11,6 +11,8 @@ env:
   global:
     - RUBY_GC_MALLOC_LIMIT=90000000
     - RUBY_GC_HEAP_FREE_SLOTS=200000
+    - COVERALLS=true
+    - RAILS_ENV=test
 
 services:
   - redis
@@ -25,12 +27,12 @@ before_script:
   - cp config/database.yml.ci config/database.yml
   - cp config/exsules.yml.example config/exsules.yml
   - cp config/secrets.yml.example config/secrets.yml
-  - RAILS_ENV=test bundle exec rake db:create db:migrate --trace
+  - bundle exec rake db:create db:migrate --trace
 
 bundler_args: "--without development --jobs 3 --retry 5"
 
 script:
-  - RAILS_ENV=test COVERALLS=true bundle exec rspec
+  - bundle exec rspec
 
 notifications:
   email: false
