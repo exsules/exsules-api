@@ -9,13 +9,13 @@ gem 'rails', '>= 5.0.0.beta1.1', '< 5.1'
 gem 'pg', '~> 0.18'
 gem 'puma'
 
-gem 'jsonapi-serializers'
+# switch to rubygem once it stable
+gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources', branch: 'rails5'
 gem 'oj'
 gem 'oj_mimic_json'
 
-# switch to gem once it stable
+# switch to rubygem once it stable
 gem 'devise', github: 'plataformatec/devise', branch: 'master'
-
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'omniauth'
 
@@ -72,7 +72,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
   gem 'database_cleaner'
 end
 

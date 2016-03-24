@@ -1,6 +1,11 @@
-if ENV['CODECLIMATE']
-  require 'codeclimate-test-reporter'
-  CodeClimate::TestReporter.start
+if ENV['SIMPLECOV']
+  require 'simplecov'
+  SimpleCov.start :rails
+end
+
+if ENV['COVERALLS']
+  require 'coveralls'
+  Coveralls.wear!
 end
 require 'rubygems'
 
@@ -49,7 +54,6 @@ RSpec.configure do |config|
 
   config.include Helpers
   config.include Devise::TestHelpers, type: :controller
-  #config.include DeviseMapping, type: :controller
 
   config.before(:all) do
     WebMock.disable_net_connect! allow_localhost: true
