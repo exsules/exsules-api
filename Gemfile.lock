@@ -24,6 +24,13 @@ GIT
       rails (< 6)
 
 GIT
+  remote: https://github.com/mbleigh/acts-as-taggable-on.git
+  revision: dde41a4d0d14e0f5b57c685265f68545383f70fa
+  specs:
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
+
+GIT
   remote: https://github.com/plataformatec/devise.git
   revision: 69bee06ceee6280b54304928bb6e55c5064abad8
   branch: master
@@ -527,6 +534,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   annotate
   better_errors
   binding_of_caller

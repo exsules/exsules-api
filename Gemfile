@@ -39,6 +39,7 @@ gem 'twitter-text'
 gem 'colorize'
 gem 'friendly_id'
 gem 'link_thumbnailer'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 gem 'rack-cors'
 

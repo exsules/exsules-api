@@ -7,7 +7,10 @@ class Post < ApplicationRecord
 
   attr_accessor :link_crawler_url
 
+  before_create :hashtags
   after_commit :queue_link_fetch, on: :create, if: :contains_url?
+
+  acts_as_taggable_on :tags
 
   def raw_message
     self[:message]
@@ -15,6 +18,11 @@ class Post < ApplicationRecord
 
   def urls
     @urls ||= Twitter::Extractor.extract_urls(raw_message)
+  end
+
+  def hashtags
+    @hashtags ||= Twitter::Extractor.extract_hashtags(raw_message)
+    @hashtags.each {|hash| self.tag_list.add(hash)}
   end
 
   def contains_url?
