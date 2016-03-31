@@ -337,6 +337,9 @@ GEM
     ipaddress (0.8.3)
     iso8601 (0.9.0)
     json (1.8.3)
+    jsonapi-authorization (0.6.0)
+      jsonapi-resources (= 0.7.0)
+      pundit (~> 1.0)
     link_thumbnailer (3.1.1)
       activesupport (>= 3.0)
       image_info (~> 1.0)
@@ -393,6 +396,8 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.1.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.0.alpha)
       json
     rack-cors (0.4.0)
@@ -554,6 +559,7 @@ DEPENDENCIES
   friendly_id
   hashie
   hiredis
+  jsonapi-authorization
   jsonapi-resources!
   link_thumbnailer
   mini_magick
