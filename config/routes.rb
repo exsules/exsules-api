@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     jsonapi_resources :users, only: [:index, :show]
     jsonapi_resources :posts
     jsonapi_resources :albums
+    jsonapi_resources :comments
     get 'searches' => 'searches#index'
   end
 end

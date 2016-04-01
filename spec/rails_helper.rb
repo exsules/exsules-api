@@ -18,6 +18,7 @@ require 'rspec/rails'
 require 'webmock/rspec'
 require 'shoulda'
 require 'sidekiq/testing'
+require 'pundit/rspec'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 Dir[Rails.root.join("spec/fabricators/**/*.rb")].each {|f| require f}

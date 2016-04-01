@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :source, class_name: 'User', foreign_key: :from_user_id
   belongs_to :link_crawler_cache
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :message, presence: true
 

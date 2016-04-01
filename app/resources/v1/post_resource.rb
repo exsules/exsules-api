@@ -12,6 +12,7 @@ module V1
                :updated_at
 
     has_one :user
+    has_many :comments, as: :commentable, polymorphic: true
 
     def author
       "#{@model.source.first_name} #{@model.source.last_name}"
