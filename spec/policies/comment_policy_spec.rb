@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe PostPolicy do
+RSpec.describe CommentPolicy do
 
-  let(:user) { Fabricate(:user) }
+  let(:user) { User.new }
 
   subject { described_class }
 
@@ -19,14 +19,7 @@ RSpec.describe PostPolicy do
   end
 
   permissions :update? do
-    it 'denies access if user is not author' do
-      expect(subject).not_to permit(user, Fabricate(:post, from_user_id: Fabricate(:user)))
-    end
-
-    it 'grants access if user is the author' do
-      user2 = Fabricate(:user)
-      expect(subject).to permit(user2, Fabricate(:post, user: user, source: user2))
-    end
+    pending "add some examples to (or delete) #{__FILE__}"
   end
 
   permissions :destroy? do

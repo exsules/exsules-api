@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325212143) do
+ActiveRecord::Schema.define(version: 20160325232241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,19 @@ ActiveRecord::Schema.define(version: 20160325212143) do
   end
 
   add_index "albums", ["owner_type", "owner_id"], name: "index_albums_on_owner_type_and_owner_id", using: :btree
+
+  create_table "comments", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.string   "text",                              null: false
+    t.uuid     "user_id"
+    t.integer  "likes_count",      default: 0
+    t.string   "commentable_type", default: "Post"
+    t.uuid     "commentable_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -151,6 +164,7 @@ ActiveRecord::Schema.define(version: 20160325212143) do
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "comments", "users"
   add_foreign_key "photos", "users"
   add_foreign_key "posts", "users"
 end
