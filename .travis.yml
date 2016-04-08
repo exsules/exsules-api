@@ -16,14 +16,12 @@ env:
 
 services:
   - redis
-  - elasticsearch
 
 sudo: false
 
 cache: bundler
 
 before_script:
-  - sleep 10
   - cp config/database.yml.ci config/database.yml
   - cp config/exsules.yml.example config/exsules.yml
   - cp config/secrets.yml.example config/secrets.yml

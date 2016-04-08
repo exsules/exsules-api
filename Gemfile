@@ -26,11 +26,8 @@ gem 'sinatra', github: 'sinatra/sinatra', branch: 'master', require: nil
 gem 'hiredis'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
 
-gem 'searchkick'
-
 gem 'seed-fu', github: 'cimtico/seed-fu', branch: 'rails_5'
 
-gem 'settingslogic'
 gem 'hashie'
 
 gem 'carrierwave'
