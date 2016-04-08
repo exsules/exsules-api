@@ -1,4 +1,5 @@
 class BaseResource < JSONAPI::Resource
+  include JSONAPI::Authorization::PunditScopedResource
   abstract
 
   def fetchable_fields

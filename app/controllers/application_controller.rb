@@ -10,7 +10,7 @@ class ApplicationController < ActionController::API
   end
 
   def handle_exceptions(e)
-    if JSONAPI.configuration.exception_class_whitelist.any? { |k| e.class.ancestors.include?(k)  }
+    if JSONAPI.configuration.exception_class_whitelist.any? { |k| e.class.ancestors.include?(k) }
       raise e
     else
       super
@@ -24,5 +24,4 @@ class ApplicationController < ActionController::API
   def context
     { user: current_user }
   end
-
 end

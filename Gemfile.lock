@@ -17,18 +17,25 @@ GIT
 
 GIT
   remote: https://github.com/lynndylanhurley/devise_token_auth.git
-  revision: afe6da1951e48d9baf0fdfad7702767c4221c176
+  revision: 6b00283da4cea81da7dc7921919972ccc4e655b0
   specs:
     devise_token_auth (0.1.37)
       devise (> 3.5.2, < 4.1)
       rails (< 6)
 
 GIT
+  remote: https://github.com/mbleigh/acts-as-taggable-on.git
+  revision: dde41a4d0d14e0f5b57c685265f68545383f70fa
+  specs:
+    acts-as-taggable-on (3.5.0)
+      activerecord (>= 3.2, < 5)
+
+GIT
   remote: https://github.com/plataformatec/devise.git
-  revision: 342304375946ca11608516eae80f78dbaae059d5
+  revision: 2b3799e6ceb315172d14a16103ab9fb1702f79fc
   branch: master
   specs:
-    devise (4.0.0.rc1)
+    devise (4.0.0.rc2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0, < 5.1)
@@ -37,14 +44,14 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-core.git
-  revision: d99d53628fefa599edb446c1cb32f70b1de840c9
+  revision: 350c21b6f66a54267ff615ed16604e017122e6be
   specs:
     rspec-core (3.5.0.pre)
       rspec-support (= 3.5.0.pre)
 
 GIT
   remote: https://github.com/rspec/rspec-expectations.git
-  revision: 08e93b7d3b3a7e8ff74c54e7e38a54c27ec0f84b
+  revision: e8e90cce3dfddab3ecd5b3c98559d384530daf8d
   specs:
     rspec-expectations (3.5.0.pre)
       diff-lcs (>= 1.2.0, < 2.0)
@@ -60,7 +67,7 @@ GIT
 
 GIT
   remote: https://github.com/rspec/rspec-rails.git
-  revision: 56f7d3cdecf9f02be82b628a374c782bb23bf9cb
+  revision: a7b62564d74f5025e1cfbb7d6c1d22d63b514fbf
   specs:
     rspec-rails (3.5.0.pre)
       actionpack (>= 3.0)
@@ -128,12 +135,14 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     annotate (2.7.0)
       activerecord (>= 3.2, < 6.0)
       rake (~> 10.4)
+    ansi (1.5.0)
     arel (7.0.0)
     ast (2.2.0)
-    bcrypt (3.1.10)
+    bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -160,18 +169,27 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    codeclimate-test-reporter (0.5.0)
-      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.1)
     colorize (0.7.7)
     concurrent-ruby (1.0.1)
     connection_pool (2.2.0)
+    coveralls (0.8.13)
+      json (~> 1.8)
+      simplecov (~> 0.11.0)
+      term-ansicolor (~> 1.3)
+      thor (~> 0.19.1)
+      tins (~> 1.6.0)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
-    excon (0.47.0)
-    fabrication (2.14.1)
+    ethon (0.8.1)
+      ffi (>= 1.3.0)
+    excon (0.48.0)
+    fabrication (2.15.0)
     faker (1.6.3)
       i18n (~> 0.5)
     ffi (1.9.10)
@@ -277,7 +295,7 @@ GEM
     fog-voxel (0.1.0)
       fog-core
       fog-xml
-    fog-vsphere (0.6.1)
+    fog-vsphere (0.6.3)
       fog-core
       rbvmomi (~> 1.8)
     fog-xenserver (0.2.3)
@@ -295,37 +313,63 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
+    hashdiff (0.3.0)
     hashie (3.4.3)
     highline (1.7.8)
     hiredis (0.6.1)
+    htmlentities (4.3.4)
     i18n (0.7.0)
+    image_info (1.1.2)
+      image_size
+      typhoeus
+    image_size (1.4.2)
     inflecto (0.0.2)
     ipaddress (0.8.3)
+    iso8601 (0.9.0)
     json (1.8.3)
+    jsonapi-authorization (0.6.0)
+      jsonapi-resources (= 0.7.0)
+      pundit (~> 1.0)
+    link_thumbnailer (3.1.1)
+      activesupport (>= 3.0)
+      image_info (~> 1.0)
+      json (~> 1.8, >= 1.7.7)
+      net-http-persistent (~> 2.9)
+      nokogiri (~> 1.6)
+      rake (>= 0.9)
+      video_info (~> 2.6)
     listen (3.0.6)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9.7)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
-    mail (2.6.3)
-      mime-types (>= 1.16, < 3)
+    mail (2.6.4)
+      mime-types (>= 1.16, < 4)
     metaclass (0.0.4)
     method_source (0.8.2)
-    mime-types (2.99.1)
+    mime-types (3.0)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2016.0221)
     mini_magick (4.4.0)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
     multi_json (1.11.2)
+    net-http-persistent (2.9.4)
+    net_http_timeout_errors (0.3.0)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    oga (2.2)
+      ast
+      ruby-ll (~> 2.1)
     oj (2.14.6)
     oj_mimic_json (1.0.1)
     omniauth (1.3.1)
       hashie (>= 1.2, < 4)
       rack (>= 1.0, < 3)
+    open_uri_redirections (0.2.1)
     orm_adapter (0.5.0)
     parser (2.3.0.6)
       ast (~> 2.2)
@@ -342,7 +386,9 @@ GEM
       pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
-    puma (3.0.2)
+    puma (3.1.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.0.alpha)
       json
     rack-cors (0.4.0)
@@ -388,7 +434,7 @@ GEM
     redis (3.2.2)
     rerun (0.11.0)
       listen (~> 3.0)
-    responders (2.1.1)
+    responders (2.1.2)
       railties (>= 4.2.0, < 5.1)
     rubocop (0.37.2)
       parser (>= 2.3.0.4, < 3.0)
@@ -396,6 +442,9 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 0.3)
+    ruby-ll (2.1.2)
+      ansi
+      ast
     ruby-progressbar (1.7.5)
     ruby2ruby (2.3.0)
       ruby_parser (~> 3.1)
@@ -404,7 +453,6 @@ GEM
       sexp_processor (~> 4.1)
     safe_yaml (1.0.4)
     sass (3.4.21)
-    settingslogic (2.0.9)
     sexp_processor (4.7.0)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
@@ -436,21 +484,38 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     temple (0.7.6)
+    term-ansicolor (1.3.2)
+      tins (~> 1.0)
     terminal-table (1.5.2)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
+    tins (1.6.0)
     trollop (2.1.2)
     twitter-text (1.13.4)
       unf (~> 0.1.0)
+    typhoeus (1.0.1)
+      ethon (>= 0.8.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
     unicode-display_width (0.3.1)
+    video_info (2.6.0)
+      addressable (~> 2.3)
+      htmlentities (~> 4.3)
+      iso8601 (~> 0.9)
+      multi_json (~> 1.11)
+      net_http_timeout_errors (~> 0.3.0)
+      oga (~> 2.2)
+      open_uri_redirections (~> 0.2)
     warden (1.2.6)
       rack (>= 1.0)
+    webmock (1.24.2)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
     websocket-driver (0.6.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
@@ -460,6 +525,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   annotate
   better_errors
   binding_of_caller
@@ -467,8 +533,9 @@ DEPENDENCIES
   bundler-audit
   byebug
   carrierwave
-  codeclimate-test-reporter
   colorize
+  coveralls
+  database_cleaner
   devise!
   devise_token_auth!
   fabrication
@@ -478,7 +545,9 @@ DEPENDENCIES
   friendly_id
   hashie
   hiredis
+  jsonapi-authorization
   jsonapi-resources!
+  link_thumbnailer
   mini_magick
   mocha
   oj
@@ -500,14 +569,15 @@ DEPENDENCIES
   rspec-support!
   rubocop (~> 0.37.2)
   seed-fu!
-  settingslogic
   shoulda
   sidekiq
   sidekiq-statistic
+  simplecov
   sinatra!
   spring
   twitter-text
   tzinfo-data
+  webmock
 
 BUNDLED WITH
    1.11.2

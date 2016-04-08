@@ -1,7 +1,6 @@
 module V1
   class UserResource < BaseResource
-    attributes :id,
-               :first_name,
+    attributes :first_name,
                :last_name,
                :username,
                :location,

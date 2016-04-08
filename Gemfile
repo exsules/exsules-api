@@ -9,14 +9,14 @@ gem 'rails', '>= 5.0.0.beta1.1', '< 5.1'
 gem 'pg', '~> 0.18'
 gem 'puma'
 
-# switch to official when https://github.com/cerebris/jsonapi-resources/pull/579 has been merged
+# switch to rubygem once it stable
 gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources', branch: 'rails5'
+gem 'jsonapi-authorization'
 gem 'oj'
 gem 'oj_mimic_json'
 
-# switch to gem once it stable
+# switch to rubygem once it stable
 gem 'devise', github: 'plataformatec/devise', branch: 'master'
-
 gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
 gem 'omniauth'
 
@@ -28,7 +28,6 @@ gem 'redis', require: ['redis', 'redis/connection/hiredis']
 
 gem 'seed-fu', github: 'cimtico/seed-fu', branch: 'rails_5'
 
-gem 'settingslogic'
 gem 'hashie'
 
 gem 'carrierwave'
@@ -37,6 +36,8 @@ gem 'mini_magick'
 gem 'twitter-text'
 gem 'colorize'
 gem 'friendly_id'
+gem 'link_thumbnailer'
+gem 'acts-as-taggable-on', github: 'mbleigh/acts-as-taggable-on'
 
 gem 'rack-cors'
 
@@ -66,10 +67,13 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rubocop', '~> 0.37.2', require: false
   gem 'bundler-audit', require: false
+  gem 'webmock', require: nil
 end
 
 group :test do
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
+  gem 'database_cleaner'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

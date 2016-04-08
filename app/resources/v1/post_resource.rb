@@ -1,7 +1,6 @@
 module V1
   class PostResource < BaseResource
-    attributes :id,
-               :author,
+    attributes :author,
                :message,
                :username,
                :user_id,
@@ -13,6 +12,7 @@ module V1
                :updated_at
 
     has_one :user
+    has_many :comments, as: :commentable, polymorphic: true
 
     def author
       "#{@model.source.first_name} #{@model.source.last_name}"
@@ -22,24 +22,30 @@ module V1
       @model.source.username
     end
 
-    def self.creatable_fields(context)
-      super - [
-        :author,
-        :username,
-        :created_at,
-        :updated_at,
-        :reposts_count,
-        :likes_count,
-        :comments_count
-      ]
-    end
+    class << self
+      def creatable_fields(context)
+        super - [
+          :author,
+          :username,
+          :created_at,
+          :updated_at,
+          :reposts_count,
+          :likes_count,
+          :comments_count
+        ]
+      end
 
-    def self.updatable_fields(context)
-      super - [
-        :author,
-        :username
-      ]
+      def updatable_fields(context)
+        super - [
+          :author,
+          :username,
+          :created_at,
+          :updated_at,
+          :reposts_count,
+          :likes_count,
+          :comments_count
+        ]
+      end
     end
-
   end
 end
