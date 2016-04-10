@@ -29,7 +29,7 @@ end
 #
 # Table name: link_crawler_caches
 #
-#  id          :uuid             not null, primary key
+#  id          :integer          not null, primary key
 #  title       :string
 #  description :text
 #  image       :string

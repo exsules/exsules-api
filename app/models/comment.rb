@@ -13,12 +13,12 @@ end
 #
 # Table name: comments
 #
-#  id               :uuid             not null, primary key
+#  id               :integer          not null, primary key
 #  text             :string           not null
-#  user_id          :uuid
+#  user_id          :integer
 #  likes_count      :integer          default(0)
 #  commentable_type :string           default("Post")
-#  commentable_id   :uuid
+#  commentable_id   :integer          default(0)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #

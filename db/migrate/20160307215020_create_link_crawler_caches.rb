@@ -1,6 +1,6 @@
 class CreateLinkCrawlerCaches < ActiveRecord::Migration[5.0]
   def up
-    create_table :link_crawler_caches, id: :uuid do |t|
+    create_table :link_crawler_caches do |t|
       t.string :title
       t.text :description
       t.string :image
@@ -10,7 +10,7 @@ class CreateLinkCrawlerCaches < ActiveRecord::Migration[5.0]
     end
 
     change_table :posts do |t|
-      t.uuid :link_crawler_cache_id
+      t.integer :link_crawler_cache_id
     end
   end
 

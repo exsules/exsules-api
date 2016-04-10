@@ -39,16 +39,16 @@ end
 #
 # Table name: posts
 #
-#  id                    :uuid             not null, primary key
-#  user_id               :uuid
+#  id                    :integer          not null, primary key
+#  user_id               :integer
 #  message               :text
 #  likes_count           :integer          default(0)
 #  comments_count        :integer          default(0)
-#  from_user_id          :uuid
+#  from_user_id          :integer
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  reposts_count         :integer          default(0)
-#  link_crawler_cache_id :uuid
+#  link_crawler_cache_id :integer
 #
 # Indexes
 #

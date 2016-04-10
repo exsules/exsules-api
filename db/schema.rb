@@ -15,12 +15,11 @@ ActiveRecord::Schema.define(version: 20160325232241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "uuid-ossp"
 
-  create_table "albums", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+  create_table "albums", force: :cascade do |t|
     t.string   "name"
     t.string   "owner_type"
-    t.uuid     "owner_id"
+    t.integer  "owner_id"
     t.integer  "status",     default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -28,12 +27,12 @@ ActiveRecord::Schema.define(version: 20160325232241) do
 
   add_index "albums", ["owner_type", "owner_id"], name: "index_albums_on_owner_type_and_owner_id", using: :btree
 
-  create_table "comments", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.string   "text",                              null: false
-    t.uuid     "user_id"
+    t.integer  "user_id"
     t.integer  "likes_count",      default: 0
     t.string   "commentable_type", default: "Post"
-    t.uuid     "commentable_id"
+    t.integer  "commentable_id",   default: 0
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
@@ -54,7 +53,7 @@ ActiveRecord::Schema.define(version: 20160325232241) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
-  create_table "link_crawler_caches", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+  create_table "link_crawler_caches", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.string   "image"
@@ -63,10 +62,10 @@ ActiveRecord::Schema.define(version: 20160325232241) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "photos", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+  create_table "photos", force: :cascade do |t|
     t.string   "caption"
-    t.uuid     "user_id"
-    t.uuid     "album_id"
+    t.integer  "user_id"
+    t.integer  "album_id"
     t.integer  "cover",      default: 0
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
@@ -75,16 +74,16 @@ ActiveRecord::Schema.define(version: 20160325232241) do
   add_index "photos", ["album_id"], name: "index_photos_on_album_id", using: :btree
   add_index "photos", ["user_id"], name: "index_photos_on_user_id", using: :btree
 
-  create_table "posts", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
-    t.uuid     "user_id"
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
     t.text     "message"
     t.integer  "likes_count",           default: 0
     t.integer  "comments_count",        default: 0
-    t.uuid     "from_user_id"
+    t.integer  "from_user_id"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.integer  "reposts_count",         default: 0
-    t.uuid     "link_crawler_cache_id"
+    t.integer  "link_crawler_cache_id"
   end
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
@@ -116,7 +115,7 @@ ActiveRecord::Schema.define(version: 20160325232241) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "users", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "provider",                           default: "email", null: false
     t.string   "uid",                                default: "",      null: false
     t.string   "encrypted_password",                 default: "",      null: false
