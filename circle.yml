@@ -7,11 +7,14 @@ checkout:
     - cp config/database.yml.ci config/database.yml
     - cp config/exsules.yml.example config/exsules.yml
     - cp config/secrets.yml.example config/secrets.yml
-    - bundle exec rake db:create db:migrate --trace
 
 dependencies:
   bundler:
     without: [development]
+
+database:
+  override:
+    - bundle exec rake db:create db:migrate --trace
 
 test:
   override:
