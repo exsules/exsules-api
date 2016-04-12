@@ -1,4 +1,12 @@
 class PostPolicy < ApplicationPolicy
+  def index?
+    true
+  end
+
+  def create?
+    true if user
+  end
+
   def update?
     return true if user.admin?
     return true if user.id == record.from_user_id

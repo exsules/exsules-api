@@ -3,6 +3,8 @@ class ApplicationController < ActionController::API
   include DeviseTokenAuth::Concerns::SetUserByToken
   include JSONAPI::ActsAsResourceController
 
+  rescue_from Pundit::NotAuthorizedError, with: :unauthorized!
+
   private
 
   def add_headers
