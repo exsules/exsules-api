@@ -7,6 +7,7 @@ module V1
                :updated_at
 
     has_one :user
+    has_many :likes
 
     def author
       "#{@model.user.first_name} #{@model.user.last_name}"

@@ -8,6 +8,10 @@ class UserPolicy < ApplicationPolicy
     return true
   end
 
+  def update?
+    true if user.admin? || user == record
+  end
+
   class Scope < Scope
     def resolve
       scope

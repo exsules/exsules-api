@@ -2,9 +2,9 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true, counter_cache: :comments_count
 
-  validates :text, presence: true
+  has_many :likes, as: :likable, dependent: :destroy
 
-  #after_commit :update_counters, on: :create
+  validates :text, presence: true
 
   acts_as_taggable_on :tags
 end
