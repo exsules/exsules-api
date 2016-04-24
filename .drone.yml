@@ -24,10 +24,10 @@ compose:
   redis:
     image: redis
 
-    matrix:
-      RUBY_VERSION:
-        - 2.2
-        - 2.3
-      POSTGRES_VERSION:
-        - 9.4
-        - 9.5
+matrix:
+  RUBY_VERSION:
+    - 2.2
+    - 2.3
+  POSTGRES_VERSION:
+    - 9.4
+    - 9.5
