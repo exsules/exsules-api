@@ -1,0 +1,33 @@
+build:
+  image: ruby:$$RUBY_VERSION
+  environment:
+    - RUBY_GC_MALLOC_LIMIT=90000000
+    - RUBY_GC_HEAP_FREE_SLOTS=200000
+    - COVERALLS=true
+    - RAILS_ENV=test
+  commands:
+    - cp config/database.yml.ci config/database.yml
+    - cp config/exsules.yml.example config/exsules.yml
+    - cp config/secrets.yml.example config/secrets.yml
+    - echo "  host: 127.0.0.1\n  username: postgres\n  password: exsules"
+    - bundle install --without development --jobs 3 --retry  5
+    - bundle exec rake db:create db:migrate --trace
+    - bundle exec rspec
+
+compose:
+  database:
+    image: postgres:$$POSTGRES_VERSION
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=exsules
+      - POSTGRES_DB=exsules_test
+  redis:
+    image: redis
+
+    matrix:
+      RUBY_VERSION:
+        - 2.2
+        - 2.3
+      POSTGRES_VERSION:
+        - 9.4
+        - 9.5
