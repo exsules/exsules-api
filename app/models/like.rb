@@ -9,10 +9,10 @@ end
 #
 # Table name: likes
 #
-#  id           :integer          not null, primary key
-#  user_id      :integer
+#  id           :uuid             not null, primary key
+#  user_id      :uuid
 #  likable_type :string
-#  likable_id   :integer
+#  likable_id   :uuid
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #

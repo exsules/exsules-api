@@ -11,10 +11,10 @@ end
 #
 # Table name: photos
 #
-#  id         :integer          not null, primary key
+#  id         :uuid             not null, primary key
 #  caption    :string
-#  user_id    :integer
-#  album_id   :integer
+#  user_id    :uuid
+#  album_id   :uuid
 #  cover      :integer          default("album")
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

@@ -10,10 +10,10 @@ end
 #
 # Table name: albums
 #
-#  id         :integer          not null, primary key
+#  id         :uuid             not null, primary key
 #  name       :string
 #  owner_type :string
-#  owner_id   :integer
+#  owner_id   :uuid
 #  status     :integer          default("open"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
