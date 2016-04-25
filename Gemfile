@@ -10,7 +10,7 @@ gem 'pg', '~> 0.18'
 gem 'puma'
 
 # switch to rubygem once it stable
-gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources', branch: 'rails5'
+gem 'jsonapi-resources', github: 'cerebris/jsonapi-resources', branch: 'master'
 gem 'jsonapi-authorization'
 gem 'oj'
 gem 'oj_mimic_json'
